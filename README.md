@@ -1,4 +1,4 @@
-# Find Active Directory user
+# Find Active Directory user (works on distro Linux)
 
 Python script to find users (current logged on one or mutiples hosts) over Active Directory or Linux hosts
 
@@ -12,7 +12,7 @@ Python script to find users (current logged on one or mutiples hosts) over Activ
 
 
 - Add srv.txt (Add you hosts)
-- Add users to find on users-to-find
+- Add users to find on users-to-find.txt
 - Change line 18 for you SSH/AD user
 - Change line 19 for you SSH/AD password
 
