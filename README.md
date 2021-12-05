@@ -1,0 +1,36 @@
+# Find Active Directory user
+
+Python script to find users (current logged on one or mutiples hosts) over Active Directory or Linux hosts
+
+
+
+# Deploying
+
+
+
+### Notes
+
+
+- Add srv.txt (Add you hosts)
+- Add users to find on users-to-find
+
+After this you already for install Python package dependecies
+
+
+```
+pip -r requeriments.txt
+```
+
+Now ran ...
+
+```
+python main.py
+```
+
+
+### Ouput
+
+Easy, now check output.csv
+
+
+Enjoy
