@@ -17,7 +17,6 @@ def check_user_process(wmi_obj, user):
 
 user = "you-ad-user"
 password = "you-ad-password"
-user_target = "ad-user-to-find"
 file_servers = "srv.txt"
 file_users = "users-to-find.txt"
 
