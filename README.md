@@ -13,6 +13,9 @@ Python script to find users (current logged on one or mutiples hosts) over Activ
 
 - Add srv.txt (Add you hosts)
 - Add users to find on users-to-find
+- Change line 18 for you SSH/AD user
+- Change line 19 for you SSH/AD password
+
 
 After this you already for install Python package dependecies
 
