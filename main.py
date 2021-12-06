@@ -38,7 +38,7 @@ with open(file_servers, "r") as handle_servers:
                     try:
                         # Is Windows host?
                         wmi_object = wmi.WMI(c_addr, user=user, password=password)
-                        user_found = check_user_process(wmi_object, user_target)
+                        user_found = check_user_process(wmi_object, c_user)
 
                     except wmi.x_access_denied:
                         print("[!] auth Windows access denied on " + c_addr)
