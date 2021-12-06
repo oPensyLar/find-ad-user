@@ -48,7 +48,7 @@ with open(file_servers, "r") as handle_servers:
                         continue
 
                     p = _parser.Parser()
-                    user_found = p.parse_procs(ret_data["stdout"], user_target)
+                    user_found = p.parse_procs(ret_data["stdout"], c_user)
 
             if user_found is True:
                 headers = ["username", "logged_on"]
