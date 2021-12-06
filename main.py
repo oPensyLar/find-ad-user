@@ -41,7 +41,10 @@ with open(file_servers, "r") as handle_servers:
                         user_found = check_user_process(wmi_object, c_user)
 
                     except wmi.x_access_denied:
-                        print("[!] auth Windows access denied on " + c_addr)
+                        print("[!] x_access_denied on " + c_addr)
+
+                    except wmi.x_wmi_authentication:
+                        print("[!] x_wmi_authentication on " + c_addr)
 
                 else:
                     if ret_data is None:
