@@ -1,4 +1,5 @@
 import wmi
+import ping3
 import _parser
 import csv_writer
 import pyad.adquery
@@ -8,7 +9,7 @@ enable_ssh_find = False
 if enable_ssh_find:
 	import ssh_client
 
-def check_user_process(wmi_obj, user):	
+def check_user_process(wmi_obj, user):
 	for s in wmi_obj.Win32_Process():
 		owner = s.GetOwner()
 
@@ -25,12 +26,19 @@ password = ""
 file_users = "users-to-find.txt"
 
 q = pyad.adquery.ADQuery()
-q.execute_query(attributes=["distinguishedName", "description"], where_clause="objectClass = 'computer'")
+q.execute_query(attributes=["distinguishedName", "description"],
+	where_clause="objectClass = 'computer'")
 
 for row in q.get_results():
     str_split = row["distinguishedName"].split(",")
     str_split = str_split[0].split("=")
     print("Checking on " + str_split[1])
+
+    ping_result = ping3.ping(str_split[1])
+
+    if ping_result is False:
+        print("[!] Host " + str_split[1] + " is down")
+        continue
 
     with open(file_users, "r") as handle_user:
     	ret_data = None
@@ -55,10 +63,10 @@ for row in q.get_results():
                     	headers = ["username", "logged_on"]
                     	data = [[user_found["user"], str_split[1]]]
                     	csv = csv_writer.CsvWriter("output.csv", headers, data)
-                    	csv.create_csv()                    
+                    	csv.create_csv()
 
-                except wmi.x_wmi:
-                    print("[!] Host is down? on " + str_split[1] + "\n")
+#                except wmi.x_wmi:
+#                    print("[!] Host is down? on " + str_split[1] + "\n")
 
                 except wmi.x_access_denied:
                     print("[!] x_access_denied on " + str_split[1])
